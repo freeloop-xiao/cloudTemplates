@@ -1,0 +1,10 @@
+server:
+    port: 9001
+spring:
+    application:
+        name: spring-cloud-consumer
+    profiles:
+      active: dev
+feign:
+    hystrix:
+        enabled: true
