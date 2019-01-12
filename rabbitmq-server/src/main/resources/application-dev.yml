@@ -1,0 +1,16 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8000/eureka/
+spring:
+  rabbitmq:
+    port: 5672
+    username: xiao
+    password: 123456
+    virtual-host: /dev
+    host: 192.168.1.124
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 3
+        max-concurrency: 5

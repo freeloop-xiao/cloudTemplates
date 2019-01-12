@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/all.iml" filepath="$PROJECT_DIR$/all.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../consumer-server/consumer-server.iml" filepath="$PROJECT_DIR$/../consumer-server/consumer-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../discover-server/discover-server.iml" filepath="$PROJECT_DIR$/../discover-server/discover-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../kafka-server/kafka-server.iml" filepath="$PROJECT_DIR$/../kafka-server/kafka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../producer-server/producer-server.iml" filepath="$PROJECT_DIR$/../producer-server/producer-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rabbitmq-server/rabbitmq-server.iml" filepath="$PROJECT_DIR$/../rabbitmq-server/rabbitmq-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../security-server/security-server.iml" filepath="$PROJECT_DIR$/../security-server/security-server.iml" />
+    </modules>
+  </component>
+</project>
