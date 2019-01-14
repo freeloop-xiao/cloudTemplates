@@ -1,5 +1,7 @@
 package com.xiaok.kafka.vo;
 
+import org.apache.kafka.common.protocol.types.Field;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -12,6 +14,24 @@ public class User {
     private String id;
     private String username;
     private String email;
+    private String time;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getEmail() {
 
@@ -44,6 +64,7 @@ public class User {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
+                ", time='" + time + '\'' +
                 '}';
     }
 }
