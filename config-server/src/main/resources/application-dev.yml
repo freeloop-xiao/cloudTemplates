@@ -1,0 +1,13 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8000/eureka/
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/freeloop-xiao/resoucce
+          search-paths:
+          username:
+          password:
