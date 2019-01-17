@@ -9,3 +9,7 @@ eureka:
 spring:
     application:
         name: spring-cloud-eureka
+    security:
+        user:
+            name: freeloop
+            password: freeloop

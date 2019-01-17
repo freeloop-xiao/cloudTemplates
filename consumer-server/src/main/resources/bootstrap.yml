@@ -1,0 +1,17 @@
+#注册中配置
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://freeloop:freeloop@localhost:8000/eureka/
+spring:
+  cloud:
+    config:
+      name: application
+      profile: dev
+      discovery:
+        # 配置是否从注册中心获取
+        enabled: true
+        # 服务id(可以在注册中心服务名称或者是spring.application.name属性名字)
+        service-id: config-server
+        # 注册中心url地址
+#      uri: http://localhost:8080
