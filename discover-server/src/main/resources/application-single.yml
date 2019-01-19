@@ -3,9 +3,9 @@ eureka:
         fetch-registry: false
         register-with-eureka: false
         serviceUrl:
-            defaultZone: http://localhost:${server.port}/eureka/
+            defaultZone: http://freeloop:freeloop@localhost:8000/eureka/
 server:
-    port: 8000
+    port: 8001
 spring:
     application:
         name: spring-cloud-eureka

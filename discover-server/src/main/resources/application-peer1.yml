@@ -5,7 +5,7 @@ eureka:
       hostname: discover
     client:
         serviceUrl:
-            defaultZone: http://localhost:8001/eureka/
+            defaultZone: http://freeloop:freeloop@localhost:8001/eureka/
 spring:
     application:
         name: spring-cloud-eureka
