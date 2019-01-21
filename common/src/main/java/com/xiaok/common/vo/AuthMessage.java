@@ -1,4 +1,4 @@
-﻿package com.xiaok.common.vo;
+package com.xiaok.common.vo;
 
 /**
  * Created with IntelliJ IDEA.
@@ -6,17 +6,16 @@
  * User: xiaok
  * Email: 306934150@qq.com
  * Date: 2019-01-19
- * Time: 15:22
+ * Time: 15:31
  */
-public class AuthToken {
-
+public class AuthMessage {
     /**
      * 令牌
      */
     private String token;
 
     /**
-     * 有效期
+     * 单位分钟
      */
     private String expire;
 

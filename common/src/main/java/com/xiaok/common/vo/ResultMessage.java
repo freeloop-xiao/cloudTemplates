@@ -10,10 +10,7 @@ package com.xiaok.common.vo;
  */
 public class ResultMessage<T> {
 
-
     private String code;
-
-
 
     private String msg;
 
