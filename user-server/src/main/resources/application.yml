@@ -1,0 +1,11 @@
+server:
+    port: 8003
+spring:
+    application:
+        name: spring-cloud-user
+    profiles:
+      active: dev
+mybatis:
+  mapper-locations: classpath*:/mapper/*Mapper.xml    # mybatis配置文件所在路径
+  configuration:
+    map-underscore-to-camel-case: true
