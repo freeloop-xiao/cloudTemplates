@@ -1,5 +1,6 @@
 package com.xiaok.user.login.service.impl;
 
+import com.xiaok.common.exception.CommonException;
 import com.xiaok.common.vo.AuthMessage;
 import com.xiaok.common.vo.ResultMessage;
 import com.xiaok.user.login.service.LoginService;
@@ -26,13 +27,13 @@ public class LoginServiceImpl implements LoginService {
         try {
             subject.login(token);
         }catch (UnknownAccountException e){
-            System.out.println("账户不正确");
+            throw new CommonException("0001","账户不正确");
         }catch (IncorrectCredentialsException e){
-            System.out.println("密码不正确");
+            throw new CommonException("0001","密码不正确");
         }catch (ExpiredCredentialsException e){
-            System.out.println("凭证过期");
+            throw new CommonException("0001","凭证过期");
         }catch (LockedAccountException e){
-            System.out.println("账户以及被锁定");
+            throw new CommonException("0001","账户以及被锁定");
         }
         return null;
     }

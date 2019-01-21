@@ -36,18 +36,14 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResultMessage<AuthMessage> login(@ApiParam("账户") @RequestParam String account,
                                             @ApiParam("密码") @RequestParam String password) {
-        System.out.println("账户：" + account);
-        System.out.println("密码：" + password);
-        return loginService.login(account,password);
+        return loginService.login(account, password);
     }
-
 
     @ApiOperation(value = "刷新token接口", notes = "刷新token接口")
     @RequestMapping(value = "/refresh", method = RequestMethod.GET)
     public ResultMessage<AuthMessage> refresh(@ApiParam("refreshToken") @RequestParam String refreshToken) {
         return null;
     }
-
 
     @ApiOperation(value = "退出接口", notes = "退出接口")
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
