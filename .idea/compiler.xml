@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="common" />
+        <module name="common-starter" />
+        <module name="config" />
+        <module name="config-server" />
+        <module name="consumer" />
+        <module name="consumer-server" />
+        <module name="discover" />
+        <module name="discover-server" />
+        <module name="kafka" />
+        <module name="kafka-server" />
+        <module name="producer" />
+        <module name="producer-server" />
+        <module name="rabbitmq" />
+        <module name="user" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="all" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="common-starter" target="1.8" />
+      <module name="config" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="consumer" target="1.8" />
+      <module name="consumer-server" target="1.8" />
+      <module name="discover" target="1.8" />
+      <module name="discover-server" target="1.8" />
+      <module name="kafka" target="1.8" />
+      <module name="kafka-server" target="1.8" />
+      <module name="producer" target="1.8" />
+      <module name="producer-server" target="1.8" />
+      <module name="rabbitmq" target="1.8" />
+      <module name="user" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

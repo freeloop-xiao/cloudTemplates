@@ -1,5 +1,9 @@
 server:
-  port: 8080
+  port: 8001
+
+feign:
+  hystrix:
+    enabled: true
 spring:
   profiles:
     active: dev

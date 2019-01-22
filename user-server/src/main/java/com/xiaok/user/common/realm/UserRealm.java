@@ -3,7 +3,6 @@ package com.xiaok.user.common.realm;
 import com.xiaok.user.common.auth.UserToken;
 import com.xiaok.user.common.dao.TbUserMapper;
 import com.xiaok.user.common.entity.TbUser;
-import org.apache.catalina.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;

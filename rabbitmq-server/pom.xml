@@ -11,7 +11,7 @@
 	<groupId>com.xiaok</groupId>
 	<artifactId>rabbitmq</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rabbitmq</name>
+	<name>rabbitmq-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
