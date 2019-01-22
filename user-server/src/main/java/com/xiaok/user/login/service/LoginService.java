@@ -13,7 +13,7 @@ import com.xiaok.common.vo.ResultMessage;
  */
 public interface LoginService {
 
-    ResultMessage<AuthMessage> login(String account, String password);
+    ResultMessage<AuthMessage> login(String account, String password, String appId);
 
     ResultMessage<String> refresh(String token);
 

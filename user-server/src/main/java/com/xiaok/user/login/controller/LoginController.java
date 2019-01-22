@@ -33,10 +33,11 @@ public class LoginController {
     private LoginService loginService;
 
     @ApiOperation(value = "登录接口", notes = "登录接口")
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login/{appId}", method = RequestMethod.POST)
     public ResultMessage<AuthMessage> login(@ApiParam("账户") @RequestParam String account,
-                                            @ApiParam("密码") @RequestParam String password) {
-        return loginService.login(account, password);
+                                            @ApiParam("密码") @RequestParam String password,
+                                            @ApiParam("应用id") @PathVariable("appId") String appId) {
+        return loginService.login(account, password, appId);
     }
 
     @ApiOperation(value = "刷新token接口", notes = "刷新token接口")
