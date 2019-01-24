@@ -3,17 +3,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.xiaok</groupId>
     <artifactId>all</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>all</name>
     <modules>
+        <module>../common</module>
+        <module>../common-starter</module>
         <module>../discover-server</module>
+        <module>../config-server</module>
         <module>../producer-server</module>
         <module>../consumer-server</module>
         <module>../kafka-server</module>
-        <module>../security-server</module>
+        <module>../rabbitmq-server</module>
+        <module>../user-server</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -35,4 +38,16 @@
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
         </pluginManagement>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://192.168.1.143:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://192.168.1.143:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
