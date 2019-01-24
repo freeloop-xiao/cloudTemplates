@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.xiaok</groupId>
-	<artifactId>kafka</artifactId>
+	<artifactId>kafka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kafka-server</name>
 	<description>Demo project for Spring Boot</description>
@@ -89,12 +89,12 @@
 		<repository>
 			<id>releases</id>
 			<name>Nexus Release Repository</name>
-			<url>http://192.168.1.124:8081/nexus/content/repositories/releases/</url>
+			<url>http://192.168.1.143:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Nexus Snapshot Repository</name>
-			<url>http://192.168.1.124:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://192.168.1.143:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
