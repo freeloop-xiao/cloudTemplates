@@ -4,7 +4,7 @@ eureka:
             defaultZone: http://freeloop:freeloop@localhost:8000/eureka/
 spring:
   datasource:
-    name: test
+    name: auth
     url: jdbc:mysql://localhost:3306/auth
     username: root
     password: xiaok

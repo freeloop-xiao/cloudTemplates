@@ -31,6 +31,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //拦截器.
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<>();
+        filterChainDefinitionMap.put("api/v1/login/**", "anon");
         filterChainDefinitionMap.put("/swagger-ui.html", "anon");
         filterChainDefinitionMap.put("/webjars/**", "anon");
         filterChainDefinitionMap.put("/v2/**", "anon");
@@ -41,7 +42,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         filterChainDefinitionMap.put("/**", "authc");
-        shiroFilterFactoryBean.setLoginUrl("/api/v1/login");
+        shiroFilterFactoryBean.setLoginUrl("/api/v1/login/**");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
@@ -55,6 +56,7 @@ public class ShiroConfig {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName("md5");//散列算法:这里使用MD5算法;
         hashedCredentialsMatcher.setHashIterations(2);//散列的次数，比如散列两次，相当于 md5(md5(""));
+        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(false);
         return hashedCredentialsMatcher;
     }
 

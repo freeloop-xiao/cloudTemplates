@@ -46,7 +46,7 @@
     <include refid="Base_Column_List" />
     from tb_user
     where phone = #{phone,jdbcType=VARCHAR}
-    and app_id = #{phone,jdbcType=VARCHAR}
+    and app_id = #{appId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from tb_user

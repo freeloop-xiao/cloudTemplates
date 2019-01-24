@@ -1,6 +1,7 @@
 package com.xiaok.user.login.controller;
 
 import com.netflix.ribbon.proxy.annotation.Http;
+import com.xiaok.common.util.ParamUtil;
 import com.xiaok.common.vo.AuthMessage;
 import com.xiaok.common.vo.ResultMessage;
 import com.xiaok.user.login.service.LoginService;
@@ -37,12 +38,14 @@ public class LoginController {
     public ResultMessage<AuthMessage> login(@ApiParam("账户") @RequestParam String account,
                                             @ApiParam("密码") @RequestParam String password,
                                             @ApiParam("应用id") @PathVariable("appId") String appId) {
+        ParamUtil.checkParams(account, password, account);
         return loginService.login(account, password, appId);
     }
 
     @ApiOperation(value = "刷新token接口", notes = "刷新token接口")
     @RequestMapping(value = "/refresh", method = RequestMethod.GET)
     public ResultMessage<AuthMessage> refresh(@ApiParam("refreshToken") @RequestParam String refreshToken) {
+
         return null;
     }
 

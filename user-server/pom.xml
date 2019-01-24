@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.xiaok</groupId>
-	<artifactId>user</artifactId>
+	<artifactId>user-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user-server</name>
 	<description>Demo project for Spring Boot</description>

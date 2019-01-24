@@ -24,10 +24,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-    @Autowired
-    private TbUserMapper tbUserMapper;
-
-
     @Override
     public ResultMessage<AuthMessage> login(String account, String password, String appId) {
         UserToken token = new UserToken(account, password,appId);
@@ -41,9 +37,9 @@ public class LoginServiceImpl implements LoginService {
         } catch (ExpiredCredentialsException e) {
             throw new CommonException("0001", "凭证过期");
         } catch (LockedAccountException e) {
-            throw new CommonException("0001", "账户以及被锁定");
+            throw new CommonException("0001", "账户被锁定");
         }
-        return null;
+        return new ResultMessage<>("0000","登录成功");
     }
 
     @Override
