@@ -1,4 +1,4 @@
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://freeloop:freeloop@localhost:8000/eureka/
+            defaultZone: http://freeloop:freeloop@47.106.89.221:8000/eureka/

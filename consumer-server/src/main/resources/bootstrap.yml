@@ -14,4 +14,4 @@ spring:
         # 服务id(可以在注册中心服务名称或者是spring.application.name属性名字)
         service-id: config-server
         # 注册中心url地址
-#      uri: http://localhost:8080
+        # uri: http://localhost:8080
