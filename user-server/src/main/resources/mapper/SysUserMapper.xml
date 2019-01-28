@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaok.user.common.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.xiaok.user.common.entity.SysUser">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="user_alias" jdbcType="VARCHAR" property="userAlias" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sex" jdbcType="SMALLINT" property="sex" />
+    <result column="id_card_type" jdbcType="SMALLINT" property="idCardType" />
+    <result column="id_card_no" jdbcType="VARCHAR" property="idCardNo" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="prov" jdbcType="VARCHAR" property="prov" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="ref_id" jdbcType="VARCHAR" property="refId" />
+    <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd" />
+    <result column="login_salt" jdbcType="VARCHAR" property="loginSalt" />
+    <result column="hand_pwd" jdbcType="VARCHAR" property="handPwd" />
+    <result column="hand_salt" jdbcType="VARCHAR" property="handSalt" />
+    <result column="head_url" jdbcType="VARCHAR" property="headUrl" />
+    <result column="real_flag" jdbcType="SMALLINT" property="realFlag" />
+    <result column="lock_flag" jdbcType="SMALLINT" property="lockFlag" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="remark1" jdbcType="VARCHAR" property="remark1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, name, user_type, user_alias, phone, sex, id_card_type, id_card_no, birthday, 
+    email, prov, city, area, level, ref_id, login_pwd, login_salt, hand_pwd, hand_salt, 
+    head_url, real_flag, lock_flag, del_flag, create_time, update_time, remark, app_id, 
+    remark1
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPhoneAndAppId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_user
+    where phone = #{phone,jdbcType=VARCHAR}
+    and app_id = #{appId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xiaok.user.common.entity.SysUser">
+    insert into sys_user (user_id, name, user_type, 
+      user_alias, phone, sex, 
+      id_card_type, id_card_no, birthday, 
+      email, prov, city, 
+      area, level, ref_id, 
+      login_pwd, login_salt, hand_pwd, 
+      hand_salt, head_url, real_flag, 
+      lock_flag, del_flag, create_time, 
+      update_time, remark, app_id, 
+      remark1)
+    values (#{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
+      #{userAlias,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=SMALLINT}, 
+      #{idCardType,jdbcType=SMALLINT}, #{idCardNo,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{prov,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{refId,jdbcType=VARCHAR}, 
+      #{loginPwd,jdbcType=VARCHAR}, #{loginSalt,jdbcType=VARCHAR}, #{handPwd,jdbcType=VARCHAR}, 
+      #{handSalt,jdbcType=VARCHAR}, #{headUrl,jdbcType=VARCHAR}, #{realFlag,jdbcType=SMALLINT}, 
+      #{lockFlag,jdbcType=SMALLINT}, #{delFlag,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaok.user.common.entity.SysUser">
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="userAlias != null">
+        user_alias,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="idCardType != null">
+        id_card_type,
+      </if>
+      <if test="idCardNo != null">
+        id_card_no,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="prov != null">
+        prov,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="refId != null">
+        ref_id,
+      </if>
+      <if test="loginPwd != null">
+        login_pwd,
+      </if>
+      <if test="loginSalt != null">
+        login_salt,
+      </if>
+      <if test="handPwd != null">
+        hand_pwd,
+      </if>
+      <if test="handSalt != null">
+        hand_salt,
+      </if>
+      <if test="headUrl != null">
+        head_url,
+      </if>
+      <if test="realFlag != null">
+        real_flag,
+      </if>
+      <if test="lockFlag != null">
+        lock_flag,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="remark1 != null">
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userAlias != null">
+        #{userAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="idCardType != null">
+        #{idCardType,jdbcType=SMALLINT},
+      </if>
+      <if test="idCardNo != null">
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="prov != null">
+        #{prov,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="refId != null">
+        #{refId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null">
+        #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="loginSalt != null">
+        #{loginSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="handPwd != null">
+        #{handPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="handSalt != null">
+        #{handSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null">
+        #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="realFlag != null">
+        #{realFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="lockFlag != null">
+        #{lockFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaok.user.common.entity.SysUser">
+    update sys_user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userAlias != null">
+        user_alias = #{userAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="idCardType != null">
+        id_card_type = #{idCardType,jdbcType=SMALLINT},
+      </if>
+      <if test="idCardNo != null">
+        id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="prov != null">
+        prov = #{prov,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="refId != null">
+        ref_id = #{refId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null">
+        login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="loginSalt != null">
+        login_salt = #{loginSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="handPwd != null">
+        hand_pwd = #{handPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="handSalt != null">
+        hand_salt = #{handSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null">
+        head_url = #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="realFlag != null">
+        real_flag = #{realFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="lockFlag != null">
+        lock_flag = #{lockFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaok.user.common.entity.SysUser">
+    update sys_user
+    set name = #{name,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR},
+      user_alias = #{userAlias,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=SMALLINT},
+      id_card_type = #{idCardType,jdbcType=SMALLINT},
+      id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      prov = #{prov,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      ref_id = #{refId,jdbcType=VARCHAR},
+      login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      login_salt = #{loginSalt,jdbcType=VARCHAR},
+      hand_pwd = #{handPwd,jdbcType=VARCHAR},
+      hand_salt = #{handSalt,jdbcType=VARCHAR},
+      head_url = #{headUrl,jdbcType=VARCHAR},
+      real_flag = #{realFlag,jdbcType=SMALLINT},
+      lock_flag = #{lockFlag,jdbcType=SMALLINT},
+      del_flag = #{delFlag,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaok.user.common.dao.SysRolePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.xiaok.user.common.entity.SysRolePermissionKey">
+    <id column="role_id" jdbcType="INTEGER" property="roleId" />
+    <id column="permission_id" jdbcType="INTEGER" property="permissionId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.xiaok.user.common.entity.SysRolePermissionKey">
+    delete from sys_role_permission
+    where role_id = #{roleId,jdbcType=INTEGER}
+      and permission_id = #{permissionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaok.user.common.entity.SysRolePermissionKey">
+    insert into sys_role_permission (role_id, permission_id)
+    values (#{roleId,jdbcType=INTEGER}, #{permissionId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaok.user.common.entity.SysRolePermissionKey">
+    insert into sys_role_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="permissionId != null">
+        permission_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
