@@ -1,8 +1,8 @@
 package com.xiaok.user.common.realm;
 
 import com.xiaok.user.common.auth.UserToken;
-import com.xiaok.user.common.dao.TbUserMapper;
-import com.xiaok.user.common.entity.TbUser;
+import com.xiaok.user.common.dao.SysUserMapper;
+import com.xiaok.user.common.entity.SysUser;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
-    private TbUserMapper tbUserMapper;
+    private SysUserMapper sysUserMapper;
 
 
     @Override
@@ -31,12 +31,12 @@ public class UserRealm extends AuthorizingRealm {
             UserToken token = (UserToken) authenticationToken;
             String account = token.getUsername();
             String appId = token.getAppId();
-            TbUser tbUser = tbUserMapper.selectByPhoneAndAppId(account, appId);
-            if (tbUser == null) {
+            SysUser SysUser = sysUserMapper.selectByPhoneAndAppId(account, appId);
+            if (SysUser == null) {
                 throw new UnknownAccountException();
             }
-            String storedPassword = tbUser.getLoginPwd();
-            ByteSource solt = ByteSource.Util.bytes(tbUser.getLoginSalt());
+            String storedPassword = SysUser.getLoginPwd();
+            ByteSource solt = ByteSource.Util.bytes(SysUser.getLoginSalt());
             AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(account, storedPassword, solt, "userRealm");
             return authenticationInfo;
         }

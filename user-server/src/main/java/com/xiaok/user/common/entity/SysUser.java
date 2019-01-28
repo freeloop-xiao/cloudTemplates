@@ -2,14 +2,14 @@ package com.xiaok.user.common.entity;
 
 import java.util.Date;
 
-public class TbUser {
-    private String id;
-
-    private Date tmSmp;
+public class SysUser {
+    private String userId;
 
     private String name;
 
-    private String uAlias;
+    private String userType;
+
+    private String userAlias;
 
     private String phone;
 
@@ -47,30 +47,24 @@ public class TbUser {
 
     private Short lockFlag;
 
-    private String appId;
-
-    private String appType;
+    private String delFlag;
 
     private Date createTime;
 
+    private Date updateTime;
+
     private String remark;
+
+    private String appId;
 
     private String remark1;
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getTmSmp() {
-        return tmSmp;
-    }
-
-    public void setTmSmp(Date tmSmp) {
-        this.tmSmp = tmSmp;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -81,12 +75,20 @@ public class TbUser {
         this.name = name;
     }
 
-    public String getuAlias() {
-        return uAlias;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setuAlias(String uAlias) {
-        this.uAlias = uAlias;
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public String getUserAlias() {
+        return userAlias;
+    }
+
+    public void setUserAlias(String userAlias) {
+        this.userAlias = userAlias;
     }
 
     public String getPhone() {
@@ -233,20 +235,12 @@ public class TbUser {
         this.lockFlag = lockFlag;
     }
 
-    public String getAppId() {
-        return appId;
+    public String getDelFlag() {
+        return delFlag;
     }
 
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public String getAppType() {
-        return appType;
-    }
-
-    public void setAppType(String appType) {
-        this.appType = appType;
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
     }
 
     public Date getCreateTime() {
@@ -257,12 +251,28 @@ public class TbUser {
         this.createTime = createTime;
     }
 
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getRemark1() {
