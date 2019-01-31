@@ -15,7 +15,7 @@ public interface LoginService {
 
     ResultMessage<AuthMessage> login(String account, String password, String appId);
 
-    ResultMessage<String> refresh(String token);
+    ResultMessage<AuthMessage> refresh(String token);
 
     ResultMessage<String> logout(String token);
 }

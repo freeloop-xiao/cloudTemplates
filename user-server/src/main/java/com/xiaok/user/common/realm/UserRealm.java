@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
-    private SysUserMapper sysUserMapper;
+    private SysUserMapper tbUserMapper;
 
 
     @Override
@@ -31,12 +31,12 @@ public class UserRealm extends AuthorizingRealm {
             UserToken token = (UserToken) authenticationToken;
             String account = token.getUsername();
             String appId = token.getAppId();
-            SysUser SysUser = sysUserMapper.selectByPhoneAndAppId(account, appId);
-            if (SysUser == null) {
+            SysUser sysUser = tbUserMapper.selectByPhoneAndAppId(account, appId);
+            if (sysUser == null) {
                 throw new UnknownAccountException();
             }
-            String storedPassword = SysUser.getLoginPwd();
-            ByteSource solt = ByteSource.Util.bytes(SysUser.getLoginSalt());
+            String storedPassword = sysUser.getLoginPwd();
+            ByteSource solt = ByteSource.Util.bytes(sysUser.getLoginSalt());
             AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(account, storedPassword, solt, "userRealm");
             return authenticationInfo;
         }

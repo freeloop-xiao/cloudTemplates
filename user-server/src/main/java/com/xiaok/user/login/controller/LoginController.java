@@ -45,13 +45,13 @@ public class LoginController {
     @ApiOperation(value = "刷新token接口", notes = "刷新token接口")
     @RequestMapping(value = "/refresh", method = RequestMethod.GET)
     public ResultMessage<AuthMessage> refresh(@ApiParam("refreshToken") @RequestParam String refreshToken) {
-
-        return null;
+        ParamUtil.checkParams(refreshToken);
+        return loginService.refresh(refreshToken);
     }
 
     @ApiOperation(value = "退出接口", notes = "退出接口")
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ResultMessage<String> logout(@ApiParam("token") @RequestHeader String token) {
-        return null;
+        return loginService.logout(token);
     }
 }
