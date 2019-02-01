@@ -1,4 +1,4 @@
-package com.xiaok.gatewayserver;
+package com.xiaok.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
