@@ -1,5 +1,6 @@
 package com.xiaok.user.register.service.impl;
 
+import com.xiaok.common.exception.CommonException;
 import com.xiaok.common.vo.ResultMessage;
 import com.xiaok.user.common.dao.SysUserMapper;
 import com.xiaok.user.common.entity.SysUser;
@@ -27,6 +28,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public ResultMessage<String> register(String phone, String smsCode, String appId) {
+        checkUser(phone, appId);
         // TODO: 2019/1/23 0023 验证短信验证码
         // TODO: 2019/1/23 0023 验证appId
         SysUser user = new SysUser();
@@ -38,6 +40,13 @@ public class RegisterServiceImpl implements RegisterService {
         SimpleHash simpleHash = new SimpleHash("MD5", phone.substring(5), solt, 2);
         user.setLoginPwd(simpleHash.toBase64());
         sysUserMapper.insertSelective(user);
-        return new ResultMessage<>("0000","注册成功!");
+        return new ResultMessage<>("0000", "注册成功!");
+    }
+
+    private void checkUser(String phone, String appId) {
+        SysUser sysUser = sysUserMapper.selectByPhoneAndAppId(phone, appId);
+        if (sysUser != null) {
+            throw new CommonException("0001", "改手机号已经注册!");
+        }
     }
 }

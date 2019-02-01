@@ -30,7 +30,7 @@ public class VerifyController {
 
     @ApiOperation(value = "验证接口", notes = "验证接口")
     @RequestMapping(value = "/verify", method = RequestMethod.POST)
-    public ResultMessage<String> login(@ApiParam("token") @RequestParam String token) {
+    public ResultMessage<String> verify(@ApiParam("token") @RequestParam String token) {
         ParamUtil.checkParams(token);
         return verifyService.verify(token);
     }

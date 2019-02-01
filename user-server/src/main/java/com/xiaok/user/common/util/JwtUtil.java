@@ -38,6 +38,8 @@ public class JwtUtil {
 
     public static final String REFRESH = "refresh";
 
+    public static final String APPLY_ID = "applyId";
+
     public static final String EXPIRE = "24";
 
     /**
@@ -49,14 +51,15 @@ public class JwtUtil {
      * @param type:token类型(token 和refreshToken)
      * @return
      */
-    public static String createToken(String userId, String appId, String type) {
+    public static String createToken(String userId, String appId, String type,String applyId) {
         Calendar nowTime = Calendar.getInstance();
         if (AUTH.equals(type)) {
             nowTime.add(Calendar.DATE, 1);
         }else {
-            nowTime.add(Calendar.DATE, 2);
+            nowTime.add(Calendar.DATE, 3);
         }
         Date expiresDate = nowTime.getTime();
+
         Map<String, Object> map = new HashMap();
         map.put(ALG, "HS256");
         map.put(TYP, "JWT");
@@ -67,6 +70,7 @@ public class JwtUtil {
                     .withClaim(AUD, appId)
                     .withClaim(TYPE, type)
                     .withClaim(USER_ID, userId)
+                    .withClaim(APPLY_ID, applyId)
                     .withIssuedAt(new Date())
                     .withExpiresAt(expiresDate)
                     .sign(Algorithm.HMAC256(TOKEN_KEY));

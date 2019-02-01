@@ -1,12 +1,17 @@
 package com.xiaok.user.common.config;
 
 import com.xiaok.user.common.realm.UserRealm;
+import com.xiaok.user.common.session.UserDefaultSubjectFactory;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
+import org.apache.shiro.mgt.DefaultSubjectDAO;
+import org.apache.shiro.session.mgt.DefaultSessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,11 +65,27 @@ public class ShiroConfig {
         return userRealm;
     }
 
+    @Bean
+    public UserDefaultSubjectFactory userDefaultSubjectFactory(){
+        return new UserDefaultSubjectFactory();
+    }
+
+    @Bean
+    public DefaultSessionManager defaultSessionManager(){
+        DefaultSessionManager manager = new DefaultSessionManager();
+        manager.setSessionValidationSchedulerEnabled(false);
+        return manager;
+    }
 
     @Bean
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(userRealm());
+        securityManager.setSessionManager(defaultSessionManager());
+        DefaultSubjectDAO de = (DefaultSubjectDAO)securityManager.getSubjectDAO();
+        DefaultSessionStorageEvaluator defaultSessionStorageEvaluator =(DefaultSessionStorageEvaluator)de.getSessionStorageEvaluator();
+        defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
+        securityManager.setSubjectFactory(userDefaultSubjectFactory());
         return securityManager;
     }
 

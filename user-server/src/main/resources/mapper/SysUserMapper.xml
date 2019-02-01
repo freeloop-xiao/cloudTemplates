@@ -46,7 +46,7 @@
   <select id="selectByPhoneAndAppId" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from tb_user
+    from sys_user
     where phone = #{phone,jdbcType=VARCHAR}
     and app_id = #{appId,jdbcType=VARCHAR}
   </select>
