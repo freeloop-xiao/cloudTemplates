@@ -24,7 +24,7 @@
     <result column="head_url" jdbcType="VARCHAR" property="headUrl" />
     <result column="real_flag" jdbcType="SMALLINT" property="realFlag" />
     <result column="lock_flag" jdbcType="SMALLINT" property="lockFlag" />
-    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="del_flag" jdbcType="SMALLINT" property="delFlag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
@@ -367,6 +367,17 @@
       remark = #{remark,jdbcType=VARCHAR},
       app_id = #{appId,jdbcType=VARCHAR},
       remark1 = #{remark1,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateLockedByPrimaryKey">
+    update sys_user
+    set lock_flag = #{lockFlag,jdbcType=SMALLINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateDelByPrimaryKey">
+    update sys_user
+    set del_flag = #{lockFlag,jdbcType=SMALLINT}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

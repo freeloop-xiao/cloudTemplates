@@ -1,10 +1,10 @@
 server:
-    port: 8001
+    port: 8000
 spring:
     application:
         name: spring-cloud-user
     profiles:
-      active: dev
+      active: prod
 mybatis:
   mapper-locations: classpath*:/mapper/*Mapper.xml    # mybatis配置文件所在路径
   configuration:

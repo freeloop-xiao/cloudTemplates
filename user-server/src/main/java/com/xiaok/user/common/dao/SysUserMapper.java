@@ -21,4 +21,8 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    int updateLockedByPrimaryKey(@Param("userId") String userId, @Param("lockFlag") Short lockFlag);
+
+    int updateDelByPrimaryKey(@Param("userId") String userId, @Param("delFlag") Short delFlag);
 }

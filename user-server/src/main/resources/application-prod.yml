@@ -1,25 +1,24 @@
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://freeloop:freeloop@localhost:8000/eureka/
+    client:
+        serviceUrl:
+            defaultZone: http://freeloop:freeloop@47.106.89.221:8000/eureka/
 spring:
   redis:
-    database: 0
-    host: localhost
+    database: 3
+    host: 139.9.48.215
     port: 6379
     password: 6379xk
-    timeout: 60000
     jedis:
       pool:
         max-active: 8
         max-wait: -1
-        max-idle: 8
+        max-idle: 500
         min-idle: 0
   datasource:
-    name: test
-    url: jdbc:mysql://localhost:3306/auth
+    name: auth
+    url: jdbc:mysql://139.9.48.215:3306/user
     username: root
-    password: xiaok
+    password: liduwangyi123!
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     filters: stat

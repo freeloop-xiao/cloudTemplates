@@ -47,7 +47,7 @@ public class SysUser {
 
     private Short lockFlag;
 
-    private String delFlag;
+    private Short delFlag;
 
     private Date createTime;
 
@@ -235,11 +235,11 @@ public class SysUser {
         this.lockFlag = lockFlag;
     }
 
-    public String getDelFlag() {
+    public Short getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(String delFlag) {
+    public void setDelFlag(Short delFlag) {
         this.delFlag = delFlag;
     }
 
