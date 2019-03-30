@@ -2,14 +2,11 @@ package com.xiaok.user.common.dao;
 
 import com.xiaok.user.common.entity.SysUser;
 import com.xiaok.user.common.util.IdUtil;
-import org.aspectj.lang.annotation.Aspect;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 /**
  * author: xiao

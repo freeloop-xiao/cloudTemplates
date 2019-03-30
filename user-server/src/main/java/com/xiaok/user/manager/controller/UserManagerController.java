@@ -34,12 +34,12 @@ public class UserManagerController {
                                         @ApiParam("证件号码") String idCardNo,
                                         @ApiParam("生日") String birthday,
                                         @ApiParam("邮件") String email,
-                                        @ApiParam("省") String prov,
-                                        @ApiParam("市") String city,
-                                        @ApiParam("区") String area) {
+                                        @ApiParam("省") String provCode,
+                                        @ApiParam("市") String cityCode,
+                                        @ApiParam("区") String areaCode) {
         DecodedJWT decodedJWT = JwtUtil.verifyToken(token);
         String userId = JwtUtil.getJwtParam(JwtUtil.USER_ID, decodedJWT);
-        userManagerService.change(userId, userAlias, phone, sex, idCardType, idCardNo, birthday, email, prov, city, area);
+        userManagerService.change(userId, userAlias, phone, sex, idCardType, idCardNo, birthday, email, provCode, cityCode, areaCode);
         return new ResultMessage<>("0000", "修改成功!");
     }
 

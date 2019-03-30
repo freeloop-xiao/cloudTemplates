@@ -1,7 +1,6 @@
 package com.xiaok.user.manager.service.impl;
 
 import com.xiaok.common.exception.CommonException;
-import com.xiaok.common.util.ParamUtil;
 import com.xiaok.user.common.dao.SysUserMapper;
 import com.xiaok.user.common.entity.SysUser;
 import com.xiaok.user.manager.service.UserManagerService;
@@ -22,7 +21,7 @@ public class UserManagerServiceImpl implements UserManagerService {
     @Override
     public void change(String userId, String userAlias, String phone, Short sex,
                        Short idCardType, String idCardNo, String birthday, String email,
-                       String prov, String city, String area) {
+                       String provCode, String cityCode, String areaCode) {
         SysUser sysUser = checkSysUser(userId);
         sysUser.setUserAlias(userAlias);
         sysUser.setPhone(phone);
@@ -31,9 +30,9 @@ public class UserManagerServiceImpl implements UserManagerService {
         sysUser.setIdCardNo(idCardNo);
         sysUser.setBirthday(birthday);
         sysUser.setEmail(email);
-        sysUser.setProv(prov);
-        sysUser.setCity(city);
-        sysUser.setArea(area);
+        sysUser.setProvCode(provCode);
+        sysUser.setCityCode(cityCode);
+        sysUser.setAreaCode(areaCode);
         sysUserMapper.updateByPrimaryKeySelective(sysUser);
     }
 

@@ -12,10 +12,10 @@
     <result column="id_card_no" jdbcType="VARCHAR" property="idCardNo" />
     <result column="birthday" jdbcType="VARCHAR" property="birthday" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="prov" jdbcType="VARCHAR" property="prov" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="area" jdbcType="VARCHAR" property="area" />
-    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="prov_code" jdbcType="VARCHAR" property="provCode" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="level" jdbcType="INTEGER" property="level" />
     <result column="ref_id" jdbcType="VARCHAR" property="refId" />
     <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd" />
     <result column="login_salt" jdbcType="VARCHAR" property="loginSalt" />
@@ -24,7 +24,7 @@
     <result column="head_url" jdbcType="VARCHAR" property="headUrl" />
     <result column="real_flag" jdbcType="SMALLINT" property="realFlag" />
     <result column="lock_flag" jdbcType="SMALLINT" property="lockFlag" />
-    <result column="del_flag" jdbcType="SMALLINT" property="delFlag" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
@@ -33,9 +33,9 @@
   </resultMap>
   <sql id="Base_Column_List">
     user_id, name, user_type, user_alias, phone, sex, id_card_type, id_card_no, birthday, 
-    email, prov, city, area, level, ref_id, login_pwd, login_salt, hand_pwd, hand_salt, 
-    head_url, real_flag, lock_flag, del_flag, create_time, update_time, remark, app_id, 
-    remark1
+    email, prov_code, city_code, area_code, level, ref_id, login_pwd, login_salt, hand_pwd, 
+    hand_salt, head_url, real_flag, lock_flag, del_flag, create_time, update_time, remark, 
+    app_id, remark1
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -43,6 +43,10 @@
     from sys_user
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
   <select id="selectByPhoneAndAppId" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
@@ -50,16 +54,12 @@
     where phone = #{phone,jdbcType=VARCHAR}
     and app_id = #{appId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from sys_user
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </delete>
   <insert id="insert" parameterType="com.xiaok.user.common.entity.SysUser">
     insert into sys_user (user_id, name, user_type, 
       user_alias, phone, sex, 
       id_card_type, id_card_no, birthday, 
-      email, prov, city, 
-      area, level, ref_id, 
+      email, prov_code, city_code, 
+      area_code, level, ref_id, 
       login_pwd, login_salt, hand_pwd, 
       hand_salt, head_url, real_flag, 
       lock_flag, del_flag, create_time, 
@@ -68,8 +68,8 @@
     values (#{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
       #{userAlias,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=SMALLINT}, 
       #{idCardType,jdbcType=SMALLINT}, #{idCardNo,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{prov,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
-      #{area,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{refId,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{provCode,jdbcType=INTEGER}, #{cityCode,jdbcType=VARCHAR}, 
+      #{areaCode,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{refId,jdbcType=VARCHAR}, 
       #{loginPwd,jdbcType=VARCHAR}, #{loginSalt,jdbcType=VARCHAR}, #{handPwd,jdbcType=VARCHAR}, 
       #{handSalt,jdbcType=VARCHAR}, #{headUrl,jdbcType=VARCHAR}, #{realFlag,jdbcType=SMALLINT}, 
       #{lockFlag,jdbcType=SMALLINT}, #{delFlag,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
@@ -109,14 +109,14 @@
       <if test="email != null">
         email,
       </if>
-      <if test="prov != null">
-        prov,
+      <if test="provCode != null">
+        prov_code,
       </if>
-      <if test="city != null">
-        city,
+      <if test="cityCode != null">
+        city_code,
       </if>
-      <if test="area != null">
-        area,
+      <if test="areaCode != null">
+        area_code,
       </if>
       <if test="level != null">
         level,
@@ -195,17 +195,17 @@
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="prov != null">
-        #{prov,jdbcType=VARCHAR},
+      <if test="provCode != null">
+        #{provCode,jdbcType=INTEGER},
       </if>
-      <if test="city != null">
-        #{city,jdbcType=VARCHAR},
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
       </if>
-      <if test="area != null">
-        #{area,jdbcType=VARCHAR},
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=VARCHAR},
       </if>
       <if test="level != null">
-        #{level,jdbcType=VARCHAR},
+        #{level,jdbcType=INTEGER},
       </if>
       <if test="refId != null">
         #{refId,jdbcType=VARCHAR},
@@ -281,17 +281,17 @@
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="prov != null">
-        prov = #{prov,jdbcType=VARCHAR},
+      <if test="provCode != null">
+        prov_code = #{provCode,jdbcType=INTEGER},
       </if>
-      <if test="city != null">
-        city = #{city,jdbcType=VARCHAR},
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
       </if>
-      <if test="area != null">
-        area = #{area,jdbcType=VARCHAR},
+      <if test="areaCode != null">
+        area_code = #{areaCode,jdbcType=VARCHAR},
       </if>
       <if test="level != null">
-        level = #{level,jdbcType=VARCHAR},
+        level = #{level,jdbcType=INTEGER},
       </if>
       <if test="refId != null">
         ref_id = #{refId,jdbcType=VARCHAR},
@@ -349,10 +349,10 @@
       id_card_no = #{idCardNo,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      prov = #{prov,jdbcType=VARCHAR},
-      city = #{city,jdbcType=VARCHAR},
-      area = #{area,jdbcType=VARCHAR},
-      level = #{level,jdbcType=VARCHAR},
+      prov_code = #{provCode,jdbcType=INTEGER},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      area_code = #{areaCode,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
       ref_id = #{refId,jdbcType=VARCHAR},
       login_pwd = #{loginPwd,jdbcType=VARCHAR},
       login_salt = #{loginSalt,jdbcType=VARCHAR},

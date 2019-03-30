@@ -18,13 +18,13 @@ public interface UserManagerService {
      * @param idCardNo
      * @param birthday
      * @param email
-     * @param prov
-     * @param city
-     * @param area
+     * @param provCode
+     * @param cityCode
+     * @param areaCode
      */
     void change(String userId, String userAlias, String phone, Short sex,
                 Short idCardType, String idCardNo, String birthday,
-                String email, String prov, String city, String area);
+                String email, String provCode, String cityCode, String areaCode);
 
 
     /**

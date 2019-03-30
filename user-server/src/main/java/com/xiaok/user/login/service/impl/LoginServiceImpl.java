@@ -1,6 +1,5 @@
 package com.xiaok.user.login.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.xiaok.common.exception.CommonException;
 import com.xiaok.common.vo.AuthMessage;
@@ -15,7 +14,6 @@ import com.xiaok.user.common.util.JwtUtil;
 import com.xiaok.user.login.service.LoginService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

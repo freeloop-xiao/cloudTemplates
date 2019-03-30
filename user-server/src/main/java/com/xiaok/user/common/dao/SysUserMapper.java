@@ -8,15 +8,16 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface SysUserMapper {
+
     int deleteByPrimaryKey(String userId);
 
     int insert(SysUser record);
 
     int insertSelective(SysUser record);
 
-    SysUser selectByPrimaryKey(String userId);
-
     SysUser selectByPhoneAndAppId(@Param("phone") String phone, @Param("appId") String appId);
+
+    SysUser selectByPrimaryKey(String userId);
 
     int updateByPrimaryKeySelective(SysUser record);
 

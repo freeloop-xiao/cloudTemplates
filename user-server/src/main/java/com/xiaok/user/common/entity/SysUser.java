@@ -23,13 +23,13 @@ public class SysUser {
 
     private String email;
 
-    private String prov;
+    private String provCode;
 
-    private String city;
+    private String cityCode;
 
-    private String area;
+    private String areaCode;
 
-    private String level;
+    private Integer level;
 
     private String refId;
 
@@ -47,7 +47,7 @@ public class SysUser {
 
     private Short lockFlag;
 
-    private Short delFlag;
+    private String delFlag;
 
     private Date createTime;
 
@@ -139,35 +139,35 @@ public class SysUser {
         this.email = email;
     }
 
-    public String getProv() {
-        return prov;
+    public String getProvCode() {
+        return provCode;
     }
 
-    public void setProv(String prov) {
-        this.prov = prov;
+    public void setProvCode(String provCode) {
+        this.provCode = provCode;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityCode() {
+        return cityCode;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
     }
 
-    public String getArea() {
-        return area;
+    public String getAreaCode() {
+        return areaCode;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
     }
 
-    public String getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
@@ -235,11 +235,11 @@ public class SysUser {
         this.lockFlag = lockFlag;
     }
 
-    public Short getDelFlag() {
+    public String getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Short delFlag) {
+    public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
     }
 
