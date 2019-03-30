@@ -4,6 +4,8 @@ import com.xiaok.user.common.entity.SysRole;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface SysRoleMapper {
@@ -14,6 +16,8 @@ public interface SysRoleMapper {
     int insertSelective(SysRole record);
 
     SysRole selectByPrimaryKey(Integer roleId);
+
+    List<SysRole> selectBySelective(SysRole record);
 
     int updateByPrimaryKeySelective(SysRole record);
 

@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.sun.imageio.plugins.common.SingleTileRenderedImage;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -102,6 +103,16 @@ public class JwtUtil {
      */
     public static String getJwtParam(String key, DecodedJWT jwt) {
         return (jwt.getClaims().get(key)).asString();
+    }
+
+    /**
+     * 获取用户id
+     * @param token
+     * @return
+     */
+    public static String getUserIdByToken(String token){
+        DecodedJWT decodedJWT = JwtUtil.verifyToken(token);
+        return JwtUtil.getJwtParam(JwtUtil.USER_ID, decodedJWT);
     }
 
 }

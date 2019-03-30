@@ -19,6 +19,22 @@ public class SysRole {
 
     private String remark;
 
+    public SysRole() {
+    }
+
+    public SysRole(Integer roleId, String roleName) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+    }
+
+    public SysRole(Integer roleId, String roleName, String roleCode, String roleDesc, String remark) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.roleCode = roleCode;
+        this.roleDesc = roleDesc;
+        this.remark = remark;
+    }
+
     public Integer getRoleId() {
         return roleId;
     }
